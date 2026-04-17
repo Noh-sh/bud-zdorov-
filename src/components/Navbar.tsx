@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -23,13 +24,25 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`relative px-6 py-2.5 text-xs font-bold tracking-widest transition-all rounded-full ${
-                isActive 
-                  ? "bg-zinc-900 text-white shadow-md shadow-black/10" 
-                  : "text-zinc-600 hover:text-zinc-900"
+              className={`relative px-6 py-2.5 text-xs font-bold tracking-widest transition-colors duration-300 rounded-full ${
+                isActive ? "text-zinc-900" : "text-zinc-500 hover:text-zinc-800"
               }`}
             >
-              {item.name}
+              <AnimatePresence>
+                {isActive && (
+                  <motion.div
+                    layoutId="active-nav-pill"
+                    className="absolute inset-0 bg-white/60 backdrop-blur-xl border border-white/80 rounded-full shadow-sm"
+                    initial={false}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 38
+                    }}
+                  />
+                )}
+              </AnimatePresence>
+              <span className="relative z-10 uppercase">{item.name}</span>
             </Link>
           );
         })}

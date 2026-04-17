@@ -3,11 +3,11 @@ import React from "react";
 export default function Home() {
   return (
     <div className="flex-1 flex flex-col justify-end p-12 lg:p-24 animate-fade">
-      <div className="max-w-2xl animate-slide-up">
-        <h1 className="font-playfair text-6xl lg:text-9xl font-bold tracking-tighter text-foreground leading-none">
-          Будь Здоров
+      <div className="max-w-4xl animate-slide-up">
+        <h1 className="font-playfair text-7xl lg:text-[11rem] font-black tracking-[-0.05em] text-foreground leading-[0.8] mb-12">
+          Будь<br />Здоров
         </h1>
-        <p className="mt-8 text-lg lg:text-xl font-medium text-foreground/70 max-w-md">
+        <p className="text-xl lg:text-2xl font-medium text-foreground/60 max-w-lg leading-relaxed">
           Твой путь к гармонии через чистое питание, 
           осознанность и движение. Начни менять свою жизнь сегодня.
         </p>
