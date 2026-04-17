@@ -24,7 +24,7 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`relative px-6 py-2.5 text-xs font-bold tracking-widest transition-colors duration-300 rounded-full ${
+              className={`relative px-6 py-2.5 text-sm font-medium tracking-tight transition-colors duration-300 rounded-full font-outfit ${
                 isActive ? "text-zinc-900" : "text-zinc-500 hover:text-zinc-800"
               }`}
             >
