@@ -2,18 +2,26 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
+import { usePathname, useRouter } from "../navigation";
+import { useLocale } from "next-intl";
 
 const languages = [
-  { code: "RU", name: "Русский" },
-  { code: "EN", name: "English" },
+  { code: "RU", locale: "ru" },
+  { code: "EN", locale: "en" },
 ];
 
 export default function LanguagePicker() {
-  const [selectedLang, setSelectedLang] = useState("RU");
+  const router = useRouter();
+  const pathname = usePathname();
+  const currentLocale = useLocale();
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const handleLangChange = (newLocale: string) => {
+    router.push(pathname, { locale: newLocale });
+    setIsExpanded(false);
+  };
+
   return (
-    /* Higher z-index to stay above everything else */
     <div className="fixed top-8 right-12 z-[100]">
       <motion.div 
         layout
@@ -21,7 +29,6 @@ export default function LanguagePicker() {
       >
         <AnimatePresence mode="wait" initial={false}>
           {isExpanded ? (
-            /* Expanded State: RU | EN */
             <motion.div
               key="expanded"
               initial={{ opacity: 0, x: 20 }}
@@ -30,21 +37,17 @@ export default function LanguagePicker() {
               className="flex items-center gap-1"
             >
               {languages.map((lang) => {
-                const isSelected = selectedLang === lang.code;
+                const isActive = currentLocale === lang.locale;
                 return (
                   <button
-                    key={lang.code}
+                    key={lang.locale}
                     type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedLang(lang.code);
-                      setIsExpanded(false);
-                    }}
+                    onClick={() => handleLangChange(lang.locale)}
                     className={`relative px-6 py-2.5 text-sm font-medium tracking-tight transition-colors duration-300 rounded-full font-outfit uppercase cursor-pointer outline-none select-none ${
-                      isSelected ? "text-zinc-900" : "text-zinc-500 hover:text-zinc-800"
+                      isActive ? "text-zinc-900" : "text-zinc-500 hover:text-zinc-800"
                     }`}
                   >
-                    {isSelected && (
+                    {isActive && (
                       <motion.div
                         layoutId="active-pill-min"
                         className="absolute inset-0 bg-white/60 backdrop-blur-xl border border-white/80 rounded-full shadow-sm"
@@ -61,7 +64,6 @@ export default function LanguagePicker() {
               })}
             </motion.div>
           ) : (
-            /* Compact State: Only Current Language */
             <motion.button
               key="compact"
               initial={{ opacity: 0, x: -20 }}
@@ -71,7 +73,7 @@ export default function LanguagePicker() {
               onClick={() => setIsExpanded(true)}
               className="relative px-6 py-2.5 text-sm font-medium tracking-tight text-zinc-900 rounded-full font-outfit uppercase cursor-pointer outline-none select-none hover:bg-white/20 transition-colors"
             >
-              {selectedLang}
+              {currentLocale.toUpperCase()}
             </motion.button>
           )}
         </AnimatePresence>

@@ -1,19 +1,20 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "../navigation";
 import React from "react";
-
-const navItems = [
-  { name: "ГЛАВНОЕ", href: "/" },
-  { name: "ОБО МНЕ", href: "/about" },
-  { name: "СЕРВИС", href: "/services" },
-  { name: "КОНТАКТЫ", href: "/contact" },
-];
+import { useTranslations } from "next-intl";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const t = useTranslations('Navbar');
+
+  const navItems = [
+    { name: t('home'), href: "/" },
+    { name: t('about'), href: "/about" },
+    { name: t('services'), href: "/services" },
+    { name: t('contact'), href: "/contact" },
+  ];
 
   return (
     <nav className="fixed top-8 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none">
@@ -23,7 +24,7 @@ export default function Navbar() {
           return (
             <Link
               key={item.href}
-              href={item.href}
+              href={item.href as any}
               className={`relative px-6 py-2.5 text-sm font-medium tracking-tight transition-colors duration-300 rounded-full font-outfit ${
                 isActive ? "text-zinc-900" : "text-zinc-500 hover:text-zinc-800"
               }`}
