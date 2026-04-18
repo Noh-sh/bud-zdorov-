@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const courses = [
   { id: "gerb", title: "Лечение ГЭРБ", image: "/courses/gerb.png", description: "Свобода от изжоги и комфорт в желудке." },
@@ -14,6 +15,18 @@ const courses = [
 
 function CourseCard({ course }: { course: typeof courses[0] }) {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [selectedPrice, setSelectedPrice] = useState("6 мес");
+  const router = useRouter();
+
+  const handleBuy = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    router.push("/contact");
+  };
+
+  const handlePriceSelect = (e: React.MouseEvent, price: string) => {
+    e.stopPropagation();
+    setSelectedPrice(price);
+  };
 
   return (
     <div 
@@ -49,23 +62,34 @@ function CourseCard({ course }: { course: typeof courses[0] }) {
         </div>
 
         {/* Back Side (Pricing) */}
-        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] flex items-center justify-between px-6 rounded-2xl bg-emerald-900/90 backdrop-blur-2xl border border-emerald-500/30 text-white shadow-xl">
-          <div className="flex gap-4 lg:gap-8 items-center">
-            <div className="text-center">
-              <p className="text-[9px] lg:text-[10px] uppercase font-black tracking-tighter text-emerald-300 opacity-60">1 мес</p>
-              <p className="text-xs lg:text-sm font-black font-playfair">50$</p>
-            </div>
-            <div className="text-center">
-              <p className="text-[9px] lg:text-[10px] uppercase font-black tracking-tighter text-emerald-300 opacity-60">6 мес</p>
-              <p className="text-xs lg:text-sm font-black font-playfair text-emerald-300">200$</p>
-            </div>
-            <div className="text-center">
-              <p className="text-[9px] lg:text-[10px] uppercase font-black tracking-tighter text-emerald-300 opacity-60">12 мес</p>
-              <p className="text-xs lg:text-sm font-black font-playfair">400$</p>
-            </div>
+        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] flex items-center justify-between px-4 lg:px-6 rounded-2xl bg-emerald-900/90 backdrop-blur-2xl border border-emerald-500/30 text-white shadow-xl">
+          <div className="flex gap-2 lg:gap-4 items-center">
+            {[
+              { id: "1 мес", price: "50$" },
+              { id: "6 мес", price: "200$" },
+              { id: "12 мес", price: "400$" }
+            ].map((tier) => (
+              <div 
+                key={tier.id}
+                onClick={(e) => handlePriceSelect(e, tier.id)}
+                className={`text-center p-1.5 lg:p-2 rounded-xl transition-all border ${
+                  selectedPrice === tier.id 
+                    ? "bg-emerald-500/20 border-emerald-400/50 scale-110 shadow-lg shadow-emerald-500/20" 
+                    : "border-transparent opacity-60 hover:opacity-100 hover:bg-white/5"
+                }`}
+              >
+                <p className={`text-[8px] lg:text-[9px] uppercase font-black tracking-tighter ${selectedPrice === tier.id ? "text-white" : "text-emerald-300"}`}>
+                  {tier.id}
+                </p>
+                <p className="text-[11px] lg:text-sm font-black font-playfair">{tier.price}</p>
+              </div>
+            ))}
           </div>
           
-          <button className="px-3 py-1.5 lg:px-4 lg:py-2 bg-white text-emerald-900 text-[9px] lg:text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-emerald-50 transition-all active:scale-95">
+          <button 
+            onClick={handleBuy}
+            className="px-3 py-2 lg:px-4 lg:py-2 bg-emerald-500 text-white text-[9px] lg:text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-all active:scale-95 shadow-lg shadow-emerald-900/20"
+          >
             Купить
           </button>
         </div>
@@ -75,6 +99,7 @@ function CourseCard({ course }: { course: typeof courses[0] }) {
 }
 
 export default function ServicesPage() {
+  const router = useRouter();
   return (
     <div className="flex-1 flex items-center justify-center p-4 lg:p-8 animate-fade lg:-translate-y-6">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-5 gap-4 animate-slide-up items-start">
