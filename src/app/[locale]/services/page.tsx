@@ -110,7 +110,7 @@ function Questionnaire({ t, courseList }: { t: any, courseList: any[] }) {
               <p className="font-outfit text-sm lg:text-base text-emerald-800/70 font-medium leading-relaxed">{t('questionnaire_desc')}</p>
             </div>
             <button onClick={() => setStep("quiz")} className="w-full py-3.5 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-900/10 active:scale-95 font-outfit tracking-widest uppercase text-xs">
-               {t('buy')}
+               {t('questionnaire_start')}
             </button>
           </motion.div>
         )}

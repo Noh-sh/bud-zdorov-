@@ -31,6 +31,7 @@
     "month_12": "12 mo",
     "questionnaire_title": "QUEST",
     "questionnaire_desc": "Take a quick test for personal recommendations.",
+    "questionnaire_start": "Start test",
     "quiz_step": "Question {current} of {total}",
     "quiz_yes": "YES",
     "quiz_no": "NO",
@@ -38,7 +39,7 @@
     "result_desc": "Based on your answers, this program is most effective for you.",
     "quiz_restart": "Restart test",
     "courses": {
-      "gerb": { "title": "GERB Course", "description": "Personal nutrition and mucosal restoration plan." },
+      "gerb": { "title": "GERB Treatment", "description": "Personal nutrition and mucosal restoration plan." },
       "weight": { "title": "Ideal Weight", "description": "Individual approach to fat loss management." },
       "panic": { "title": "Panic Attacks", "description": "The gut-brain connection: working with anxiety." },
       "helicobacter": { "title": "Helicobacter", "description": "Therapy and prevention without antibiotics." },
