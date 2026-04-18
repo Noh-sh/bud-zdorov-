@@ -1,36 +1,69 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    service: "general",
+  });
+
   return (
-    <div className="flex-1 flex items-center justify-center p-8 animate-fade">
-      <div className="max-w-md w-full bg-white/50 backdrop-blur-xl p-10 rounded-[3rem] shadow-xl shadow-emerald-950/5 border border-emerald-100/50 animate-slide-up">
-        <h2 className="font-playfair text-4xl font-bold tracking-tight text-center text-foreground mb-8 text-nowrap">
-          КОНТАКТЫ
-        </h2>
+    <div className="flex-1 flex items-center justify-center p-6 lg:p-12 animate-fade lg:-translate-y-4">
+      <div className="max-w-2xl w-full animate-slide-up">
         
-        <form className="space-y-4">
-          <input
-            type="text"
-            className="w-full rounded-2xl border-none bg-emerald-50/50 px-6 py-4 text-sm font-medium focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
-            placeholder="ВАШЕ ИМЯ"
-          />
-          <input
-            type="email"
-            className="w-full rounded-2xl border-none bg-emerald-50/50 px-6 py-4 text-sm font-medium focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
-            placeholder="EMAIL"
-          />
-          <textarea
-            rows={3}
-            className="w-full rounded-2xl border-none bg-emerald-50/50 px-6 py-4 text-sm font-medium focus:ring-2 focus:ring-emerald-500 outline-none transition-all resize-none"
-            placeholder="ВАШЕ СООБЩЕНИЕ"
-          />
-          <button
-            type="submit"
-            className="w-full rounded-full bg-emerald-600 py-4 text-sm font-bold text-white shadow-lg shadow-emerald-900/10 hover:bg-emerald-500 transition-all active:scale-95 uppercase tracking-widest"
-          >
-            ОТПРАВИТЬ
-          </button>
-        </form>
+        {/* Main Content Card: Form + Socials */}
+        <div className="p-8 lg:p-12 bg-white/30 backdrop-blur-3xl rounded-[3.5rem] border border-white/50 shadow-2xl shadow-emerald-900/5 flex flex-col items-center">
+          
+          <div className="w-full space-y-8">
+            <div className="text-center space-y-2">
+              <h3 className="font-playfair text-3xl lg:text-4xl font-bold text-zinc-900 uppercase tracking-tight">
+                Запись на прием
+              </h3>
+              <p className="font-outfit text-sm lg:text-base text-zinc-500 font-medium">
+                Заполните форму и мы с вами свяжемся.
+              </p>
+            </div>
+
+            <form className="space-y-4">
+              <div className="space-y-1.5">
+                <label className="ml-4 font-outfit text-[10px] font-black text-emerald-700 uppercase tracking-widest">Ваше имя</label>
+                <input
+                  type="text"
+                  placeholder="КАК К ВАМ ОБРАЩАТЬСЯ?"
+                  className="w-full px-6 py-4 rounded-2xl bg-white/50 border border-emerald-100 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all font-outfit text-sm font-bold placeholder:text-zinc-300"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="ml-4 font-outfit text-[10px] font-black text-emerald-700 uppercase tracking-widest">Телефон</label>
+                <input
+                  type="tel"
+                  placeholder="+7 (___) ___ __ __"
+                  className="w-full px-6 py-4 rounded-2xl bg-white/50 border border-emerald-100 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all font-outfit text-sm font-bold placeholder:text-zinc-300"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="ml-4 font-outfit text-[10px] font-black text-emerald-700 uppercase tracking-widest">Интересующая услуга</label>
+                <select className="w-full px-6 py-4 rounded-2xl bg-white/50 border border-emerald-100 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all font-outfit text-sm font-bold text-zinc-600 appearance-none cursor-pointer">
+                  <option value="general">ОБЩАЯ КОНСУЛЬТАЦИЯ</option>
+                  <option value="gerb">КУРС: ЛЕЧЕНИЕ ГЭРБ</option>
+                  <option value="weight">КУРС: ЛИШНИЙ ВЕС</option>
+                  <option value="panic">КУРС: ПАНИЧЕСКИЕ АТАКИ</option>
+                  <option value="helicobacter">КУРС: ХЕЛИКОБАКТЕР</option>
+                </select>
+              </div>
+
+              <button className="w-full mt-2 py-4 lg:py-5 bg-emerald-600 text-white font-black text-xs lg:text-sm uppercase tracking-widest rounded-3xl hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-900/10 active:scale-95 font-outfit">
+                Отправить заявку
+              </button>
+            </form>
+          </div>
+        </div>
+
       </div>
     </div>
   );
