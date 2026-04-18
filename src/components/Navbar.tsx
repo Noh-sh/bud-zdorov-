@@ -16,8 +16,8 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-8 left-0 right-0 z-50 flex justify-center px-6">
-      <div className="flex items-center gap-1 p-1 bg-white/40 backdrop-blur-2xl border border-emerald-100/50 rounded-full shadow-xl shadow-emerald-900/5 transition-all">
+    <nav className="fixed top-8 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none">
+      <div className="flex items-center gap-1 p-1 bg-white/40 backdrop-blur-2xl border border-emerald-100/50 rounded-full shadow-xl shadow-emerald-900/5 transition-all pointer-events-auto">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
