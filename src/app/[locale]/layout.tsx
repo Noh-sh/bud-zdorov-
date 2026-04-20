@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, Outfit } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Logo from "@/components/Logo";
 import LanguagePicker from "@/components/LanguagePicker";

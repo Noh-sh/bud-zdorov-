@@ -1,0 +1,73 @@
+{
+  "Navbar": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "services": "SERVICES",
+    "contact": "CONTACT"
+  },
+  "Home": {
+    "heroTitle1": "Be",
+    "heroTitle2": "Well",
+    "heroSubtitle": "Your path to harmony through clean eating, mindfulness, and movement. Start changing your life today."
+  },
+  "About": {
+    "doctorName": "DR. AI-BOLIT",
+    "specialization": "Family Doctor • Nutritionist",
+    "specialization2": "Hajjam • Integrative Medicine",
+    "bio_title": "Your guide to the world of",
+    "bio_title_accent": "true health",
+    "education_strong": "Higher medical education",
+    "experience_years": " 16 years ",
+    "experience_label": "of practical experience allow me to look at health holistically.",
+    "mission_p": "I believe that each of us deserves to be truly vigorous and full of energy. My approach combines ancient traditions and modern scientific data.",
+    "quote": "“Everything about healthy lifestyle and clean eating in simple and understandable language.”"
+  },
+  "Services": {
+    "title": "Course Programs",
+    "price_suffix": "Prices →",
+    "buy": "Buy Now",
+    "month_1": "1 mo",
+    "month_6": "6 mo",
+    "month_12": "12 mo",
+    "questionnaire_title": "QUEST",
+    "questionnaire_desc": "Take a quick test for personal recommendations.",
+    "questionnaire_start": "Start test",
+    "quiz_step": "Question {current} of {total}",
+    "quiz_yes": "YES",
+    "quiz_no": "NO",
+    "recommendation": "Recommendation",
+    "result_desc": "Based on your answers, this program is most effective for you.",
+    "quiz_restart": "Restart test",
+    "courses": {
+      "gerb": { "title": "GERB Treatment", "description": "Personal nutrition and mucosal restoration plan." },
+      "weight": { "title": "Ideal Weight", "description": "Individual approach to fat loss management." },
+      "panic": { "title": "Panic Attacks", "description": "The gut-brain connection: working with anxiety." },
+      "helicobacter": { "title": "Helicobacter", "description": "Therapy and prevention without antibiotics." },
+      "recovery": { "title": "Recovery", "description": "After long medicine courses or surgery." }
+    },
+    "quiz": [
+      { "id": "gerb", "text": "Do you suffer from heartburn more than twice a week?" },
+      { "id": "helicobacter", "text": "Do you feel stomach heaviness after every meal?" },
+      { "id": "weight", "text": "Do you want to lose weight without exhausting diets?" },
+      { "id": "panic", "text": "Do you experience anxiety or panic attacks?" },
+      { "id": "recovery", "text": "Have you recently taken antibiotics?" }
+    ]
+  },
+  "Contact": {
+    "title": "Book Appointment",
+    "desc": "Fill out the form and we will contact you.",
+    "nameLabel": "Your name",
+    "namePlaceholder": "HOW SHOULD WE CALL YOU?",
+    "phoneLabel": "Phone",
+    "phonePlaceholder": "+1 (___) ___ __ __",
+    "serviceLabel": "Preferred service",
+    "submit": "Send request",
+    "services_list": {
+      "general": "GENERAL CONSULTATION",
+      "gerb": "COURSE: GERB TREATMENT",
+      "weight": "COURSE: WEIGHT LOSS",
+      "panic": "COURSE: PANIC ATTACKS",
+      "helicobacter": "COURSE: HELICOBACTER"
+    }
+  }
+}

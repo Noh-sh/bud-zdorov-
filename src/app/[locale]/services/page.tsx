@@ -104,7 +104,7 @@ function Questionnaire() {
   const result = getRecommendation();
 
   return (
-    <div className="p-6 lg:p-10 bg-emerald-900/5 backdrop-blur-3xl rounded-[2.5rem] border border-emerald-100/50 min-h-[400px] flex flex-col justify-center text-center">
+    <div className="p-5 lg:p-8 bg-white/20 backdrop-blur-3xl rounded-[2.5rem] border border-white/40 shadow-2xl shadow-emerald-900/5 min-h-[400px] flex flex-col justify-center text-center">
       <AnimatePresence mode="wait">
         {step === "start" && (
           <motion.div 
@@ -116,8 +116,8 @@ function Questionnaire() {
               <span className="text-xl">📝</span>
             </div>
             <div className="space-y-2">
-              <h3 className="font-playfair text-xl lg:text-3xl font-bold text-emerald-900 uppercase tracking-tight">ОПРОСНИК</h3>
-              <p className="font-outfit text-sm lg:text-base text-emerald-800/70 font-medium leading-relaxed">Пройдите тест для персональной рекомендации.</p>
+              <h3 className="font-playfair text-xl lg:text-2xl font-black text-zinc-900 uppercase tracking-tight">ОПРОСНИК</h3>
+              <p className="font-outfit text-sm lg:text-base text-zinc-500 font-medium leading-relaxed">Пройдите тест для персональной рекомендации.</p>
             </div>
             <button onClick={() => setStep("quiz")} className="w-full py-3.5 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-900/10 active:scale-95 font-outfit tracking-widest uppercase text-xs">Начать тест</button>
           </motion.div>
@@ -131,20 +131,20 @@ function Questionnaire() {
           >
             <div className="space-y-2">
               <p className="font-outfit text-[10px] font-black text-emerald-600/60 uppercase tracking-widest">Вопрос {currentIdx + 1} из {quizQuestions.length}</p>
-              <h4 className="font-playfair text-lg lg:text-2xl font-bold text-emerald-900 leading-tight">
+              <h4 className="font-playfair text-lg lg:text-2xl font-bold text-zinc-900 leading-tight">
                 {quizQuestions[currentIdx].text}
               </h4>
             </div>
             <div className="flex gap-4">
               <button 
                 onClick={() => handleAnswer(true)}
-                className="flex-1 py-4 bg-white border border-emerald-100 text-emerald-900 font-bold rounded-2xl hover:bg-emerald-50 transition-all active:scale-95"
+                className="flex-1 py-4 bg-white border border-emerald-100 text-zinc-900 font-bold rounded-2xl hover:bg-emerald-50 transition-all active:scale-95"
               >
                 ДА
               </button>
               <button 
                 onClick={() => handleAnswer(false)}
-                className="flex-1 py-4 bg-white border border-emerald-100 text-emerald-900 font-bold rounded-2xl hover:bg-emerald-50 transition-all active:scale-95"
+                className="flex-1 py-4 bg-white border border-emerald-100 text-zinc-900 font-bold rounded-2xl hover:bg-emerald-50 transition-all active:scale-95"
               >
                 НЕТ
               </button>
