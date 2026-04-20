@@ -39,18 +39,18 @@
     "result_desc": "Based on your answers, this program is most effective for you.",
     "quiz_restart": "Restart test",
     "courses": {
-      "gerb": { "title": "GERB Treatment", "description": "Personal nutrition and mucosal restoration plan." },
-      "weight": { "title": "Ideal Weight", "description": "Individual approach to fat loss management." },
-      "panic": { "title": "Panic Attacks", "description": "The gut-brain connection: working with anxiety." },
-      "helicobacter": { "title": "Helicobacter", "description": "Therapy and prevention without antibiotics." },
-      "recovery": { "title": "Recovery", "description": "After long medicine courses or surgery." }
+      "gerb": { "title": "GERD Treatment", "description": "Freedom from heartburn and stomach comfort." },
+      "helicobacter": { "title": "H. Pylori", "description": "Defeating the bacteria and balancing microflora." },
+      "weight": { "title": "Excess Weight", "description": "Healthy weight loss through metabolism." },
+      "panic": { "title": "Panic Attacks", "description": "Peace of mind and control over emotions." },
+      "recovery": { "title": "Post-Surgery", "description": "Gentle recovery of strength and tissues." }
     },
     "quiz": [
-      { "id": "gerb", "text": "Do you suffer from heartburn more than twice a week?" },
-      { "id": "helicobacter", "text": "Do you feel stomach heaviness after every meal?" },
-      { "id": "weight", "text": "Do you want to lose weight without exhausting diets?" },
-      { "id": "panic", "text": "Do you experience anxiety or panic attacks?" },
-      { "id": "recovery", "text": "Have you recently taken antibiotics?" }
+      { "id": "gerb", "text": "Are you bothered by heartburn or heaviness after eating?" },
+      { "id": "helicobacter", "text": "Do you often experience bloating or stomach discomfort?" },
+      { "id": "weight", "text": "Do you want to reach your ideal weight without dieting?" },
+      { "id": "panic", "text": "Do you feel anxiety or sudden attacks of fear?" },
+      { "id": "recovery", "text": "Have you recently had surgery and want to restore your strength?" }
     ]
   },
   "Contact": {

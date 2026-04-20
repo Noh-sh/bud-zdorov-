@@ -1,23 +1,24 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/navigation";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 const navItems = [
-  { name: "ГЛАВНОЕ", href: "/" },
-  { name: "ОБО МНЕ", href: "/about" },
-  { name: "СЕРВИС", href: "/services" },
-  { name: "КОНТАКТЫ", href: "/contact" },
+  { name: "home", href: "/" },
+  { name: "about", href: "/about" },
+  { name: "services", href: "/services" },
+  { name: "contact", href: "/contact" },
 ];
 
 export default function Navbar() {
+  const t = useTranslations("Navbar");
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-8 left-0 right-0 z-50 flex justify-center px-6">
-      <div className="flex items-center gap-1 p-1 bg-white/40 backdrop-blur-2xl border border-emerald-100/50 rounded-full shadow-xl shadow-emerald-900/5 transition-all">
+    <nav className="fixed top-8 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none">
+      <div className="flex items-center gap-1 p-1 bg-white/40 backdrop-blur-2xl border border-emerald-100/50 rounded-full shadow-xl shadow-emerald-900/5 transition-all pointer-events-auto">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
@@ -42,7 +43,7 @@ export default function Navbar() {
                   />
                 )}
               </AnimatePresence>
-              <span className="relative z-10 uppercase">{item.name}</span>
+              <span className="relative z-10 uppercase">{t(item.name)}</span>
             </Link>
           );
         })}

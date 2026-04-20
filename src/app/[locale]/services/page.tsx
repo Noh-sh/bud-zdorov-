@@ -3,25 +3,10 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/navigation";
+import { useTranslations } from "next-intl";
 
-const courses = [
-  { id: "gerb", title: "Лечение ГЭРБ", image: "/courses/gerb.png", description: "Свобода от изжоги и комфорт в желудке." },
-  { id: "helicobacter", title: "Хеликобактер", image: "/courses/helicobacter.png", description: "Победа над бактерией и баланс микрофлоры." },
-  { id: "weight", title: "Лишний вес", image: "/courses/weight.png", description: "Здоровое похудение через метаболизм." },
-  { id: "panic", title: "Панические атаки", image: "/courses/panic.png", description: "Спокойствие ума и контроль над эмоциями." },
-  { id: "recovery", title: "После операции", image: "/courses/recovery.png", description: "Мягкое восстановление сил и тканей." },
-];
-
-const quizQuestions = [
-  { id: "gerb", text: "Беспокоит ли вас изжога или тяжесть после еды?" },
-  { id: "helicobacter", text: "Часто ли вы испытываете вздутие или дискомфорт в желудке?" },
-  { id: "weight", text: "Хотите ли вы прийти к своему идеальному весу без диет?" },
-  { id: "panic", text: "Чувствуете ли вы тревогу или резкие приступы страха?" },
-  { id: "recovery", text: "Недавно перенесли операцию и хотите восстановить силы?" },
-];
-
-function CourseCard({ course }: { course: typeof courses[0] }) {
+function CourseCard({ course, t }: { course: any, t: any }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [selectedPrice, setSelectedPrice] = useState("6 мес");
   const router = useRouter();
@@ -55,34 +40,36 @@ function CourseCard({ course }: { course: typeof courses[0] }) {
             <p className="font-outfit text-[10px] lg:text-xs text-zinc-500 font-medium line-clamp-1">{course.description}</p>
           </div>
           <div className="flex-shrink-0 opacity-40 group-hover:opacity-100 transition-opacity">
-            <span className="text-emerald-600 text-[9px] font-black uppercase tracking-widest">Цены →</span>
+            <span className="text-emerald-600 text-[9px] font-black uppercase tracking-widest">{t("price_suffix")}</span>
           </div>
         </div>
 
         <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] flex items-center justify-between px-4 lg:px-6 rounded-2xl bg-emerald-900/90 backdrop-blur-2xl border border-emerald-500/30 text-white shadow-xl">
           <div className="flex gap-2 lg:gap-4 items-center">
-            {[{ id: "1 мес", price: "50$" }, { id: "6 мес", price: "200$" }, { id: "12 мес", price: "400$" }].map((tier) => (
+            {[{ id: "1 мес", label: t("month_1"), price: "50$" }, { id: "6 мес", label: t("month_6"), price: "200$" }, { id: "12 мес", label: t("month_12"), price: "400$" }].map((tier) => (
               <div 
                 key={tier.id}
                 onClick={(e) => handlePriceSelect(e, tier.id)}
                 className={`text-center p-1.5 lg:p-2 rounded-xl transition-all border ${selectedPrice === tier.id ? "bg-emerald-500/20 border-emerald-400/50 scale-110 shadow-lg shadow-emerald-500/20" : "border-transparent opacity-60 hover:opacity-100 hover:bg-white/5"}`}
               >
-                <p className={`text-[8px] lg:text-[9px] uppercase font-black tracking-tighter ${selectedPrice === tier.id ? "text-white" : "text-emerald-300"}`}>{tier.id}</p>
+                <p className={`text-[8px] lg:text-[9px] uppercase font-black tracking-tighter ${selectedPrice === tier.id ? "text-white" : "text-emerald-300"}`}>{tier.label}</p>
                 <p className="text-[11px] lg:text-sm font-black font-playfair">{tier.price}</p>
               </div>
             ))}
           </div>
-          <button onClick={handleBuy} className="px-3 py-2 lg:px-4 lg:py-2 bg-emerald-500 text-white text-[9px] lg:text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-all active:scale-95 shadow-lg shadow-emerald-900/20">Купить</button>
+          <button onClick={handleBuy} className="px-3 py-2 lg:px-4 lg:py-2 bg-emerald-500 text-white text-[9px] lg:text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-all active:scale-95 shadow-lg shadow-emerald-900/20">{t("buy")}</button>
         </div>
       </motion.div>
     </div>
   );
 }
 
-function Questionnaire() {
+function Questionnaire({ t, courses }: { t: any, courses: any }) {
   const [step, setStep] = useState<"start" | "quiz" | "result">("start");
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<string, boolean>>({});
+
+  const quizQuestions = t.raw("quiz");
 
   const handleAnswer = (val: boolean) => {
     const qId = quizQuestions[currentIdx].id;
@@ -97,7 +84,7 @@ function Questionnaire() {
   };
 
   const getRecommendation = () => {
-    const matched = courses.find((c) => answers[c.id] === true);
+    const matched = courses.find((c: any) => answers[c.id] === true);
     return matched || courses[2]; // Default to Weight if nothing matched
   };
 
@@ -116,10 +103,10 @@ function Questionnaire() {
               <span className="text-xl">📝</span>
             </div>
             <div className="space-y-2">
-              <h3 className="font-playfair text-xl lg:text-2xl font-black text-zinc-900 uppercase tracking-tight">ОПРОСНИК</h3>
-              <p className="font-outfit text-sm lg:text-base text-zinc-500 font-medium leading-relaxed">Пройдите тест для персональной рекомендации.</p>
+              <h3 className="font-playfair text-xl lg:text-2xl font-black text-zinc-900 uppercase tracking-tight">{t("questionnaire_title")}</h3>
+              <p className="font-outfit text-sm lg:text-base text-zinc-500 font-medium leading-relaxed">{t("questionnaire_desc")}</p>
             </div>
-            <button onClick={() => setStep("quiz")} className="w-full py-3.5 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-900/10 active:scale-95 font-outfit tracking-widest uppercase text-xs">Начать тест</button>
+            <button onClick={() => setStep("quiz")} className="w-full py-3.5 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-900/10 active:scale-95 font-outfit tracking-widest uppercase text-xs">{t("questionnaire_start")}</button>
           </motion.div>
         )}
 
@@ -130,7 +117,9 @@ function Questionnaire() {
             className="space-y-8"
           >
             <div className="space-y-2">
-              <p className="font-outfit text-[10px] font-black text-emerald-600/60 uppercase tracking-widest">Вопрос {currentIdx + 1} из {quizQuestions.length}</p>
+              <p className="font-outfit text-[10px] font-black text-emerald-600/60 uppercase tracking-widest">
+                {t("quiz_step", { current: currentIdx + 1, total: quizQuestions.length })}
+              </p>
               <h4 className="font-playfair text-lg lg:text-2xl font-bold text-zinc-900 leading-tight">
                 {quizQuestions[currentIdx].text}
               </h4>
@@ -140,13 +129,13 @@ function Questionnaire() {
                 onClick={() => handleAnswer(true)}
                 className="flex-1 py-4 bg-white border border-emerald-100 text-zinc-900 font-bold rounded-2xl hover:bg-emerald-50 transition-all active:scale-95"
               >
-                ДА
+                {t("quiz_yes")}
               </button>
               <button 
                 onClick={() => handleAnswer(false)}
                 className="flex-1 py-4 bg-white border border-emerald-100 text-zinc-900 font-bold rounded-2xl hover:bg-emerald-50 transition-all active:scale-95"
               >
-                НЕТ
+                {t("quiz_no")}
               </button>
             </div>
           </motion.div>
@@ -159,7 +148,7 @@ function Questionnaire() {
             className="space-y-6"
           >
             <div className="space-y-2">
-              <p className="font-outfit text-[10px] font-black text-emerald-600/60 uppercase tracking-widest">Рекомендация</p>
+              <p className="font-outfit text-[10px] font-black text-emerald-600/60 uppercase tracking-widest">{t("recommendation")}</p>
               <h3 className="font-playfair text-xl lg:text-2xl font-bold text-emerald-900 leading-tight uppercase">
                 {result.title}
               </h3>
@@ -168,10 +157,10 @@ function Questionnaire() {
               <Image src={result.image} alt={result.title} fill className="object-cover" />
             </div>
             <p className="font-outfit text-sm text-emerald-800/70 font-medium px-4">
-              На основе ваших ответов, эта программа наиболее эффективна для вас.
+              {t("result_desc")}
             </p>
             <div className="flex flex-col gap-2">
-              <button onClick={() => { setStep("start"); setCurrentIdx(0); }} className="text-[10px] font-bold text-emerald-600/60 hover:text-emerald-600 uppercase tracking-widest">Пройти заново</button>
+              <button onClick={() => { setStep("start"); setCurrentIdx(0); }} className="text-[10px] font-bold text-emerald-600/60 hover:text-emerald-600 uppercase tracking-widest">{t("quiz_restart")}</button>
             </div>
           </motion.div>
         )}
@@ -181,21 +170,29 @@ function Questionnaire() {
 }
 
 export default function ServicesPage() {
-  const router = useRouter();
+  const t = useTranslations("Services");
+
+  const courses = [
+    { id: "gerb", title: t("courses.gerb.title"), image: "/courses/gerb.png", description: t("courses.gerb.description") },
+    { id: "helicobacter", title: t("courses.helicobacter.title"), image: "/courses/helicobacter.png", description: t("courses.helicobacter.description") },
+    { id: "weight", title: t("courses.weight.title"), image: "/courses/weight.png", description: t("courses.weight.description") },
+    { id: "panic", title: t("courses.panic.title"), image: "/courses/panic.png", description: t("courses.panic.description") },
+    { id: "recovery", title: t("courses.recovery.title"), image: "/courses/recovery.png", description: t("courses.recovery.description") },
+  ];
 
   return (
     <div className="flex-1 flex items-center justify-center p-4 lg:p-8 animate-fade lg:-translate-y-6">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-5 gap-4 animate-slide-up items-start">
         <div className="lg:col-span-3">
           <div className="p-5 lg:p-8 bg-white/20 backdrop-blur-3xl rounded-[2.5rem] border border-white/40 shadow-2xl shadow-emerald-900/5">
-            <h2 className="font-playfair text-xl lg:text-2xl font-black text-emerald-900 mb-4 tracking-tight uppercase">Программы Курсов</h2>
+            <h2 className="font-playfair text-xl lg:text-2xl font-black text-emerald-900 mb-4 tracking-tight uppercase">{t("title")}</h2>
             <div className="space-y-2">
-              {courses.map((course) => <CourseCard key={course.id} course={course} />)}
+              {courses.map((course) => <CourseCard key={course.id} course={course} t={t} />)}
             </div>
           </div>
         </div>
         <div className="lg:col-span-2 min-h-full">
-          <Questionnaire />
+          <Questionnaire t={t} courses={courses} />
         </div>
       </div>
     </div>

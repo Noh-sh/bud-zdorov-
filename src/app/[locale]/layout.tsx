@@ -4,6 +4,8 @@ import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Logo from "@/components/Logo";
 import LanguagePicker from "@/components/LanguagePicker";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin", "cyrillic"], variable: "--font-playfair" });
@@ -14,22 +16,29 @@ export const metadata: Metadata = {
   description: "Здоровый образ жизни и чистое питание",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const messages = await getMessages();
+
   return (
-    <html lang="ru" className={`${inter.variable} ${playfair.variable} ${outfit.variable} h-full`}>
+    <html lang={locale} className={`${inter.variable} ${playfair.variable} ${outfit.variable} h-full`}>
       <body className="h-full antialiased font-sans select-none">
-        <div className="app-container">
-          <Logo />
-          <LanguagePicker />
-          <Navbar />
-          <main className="app-content pt-24">
-            {children}
-          </main>
-        </div>
+        <NextIntlClientProvider messages={messages}>
+          <div className="app-container">
+            <Logo />
+            <LanguagePicker />
+            <Navbar />
+            <main className="app-content pt-24">
+              {children}
+            </main>
+          </div>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
