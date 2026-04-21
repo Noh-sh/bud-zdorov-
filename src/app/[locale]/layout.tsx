@@ -34,7 +34,7 @@ export default async function RootLayout({
             <Logo />
             <LanguagePicker />
             <Navbar />
-            <main className="app-content pt-24">
+            <main className="app-content pt-24 pb-32 lg:pb-0">
               {children}
             </main>
           </div>
