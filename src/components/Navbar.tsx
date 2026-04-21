@@ -17,15 +17,15 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-8 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none">
-      <div className="flex items-center gap-1 p-1 bg-white/40 backdrop-blur-2xl border border-emerald-100/50 rounded-full shadow-xl shadow-emerald-900/5 transition-all pointer-events-auto">
+    <nav className="fixed bottom-8 lg:bottom-auto lg:top-8 left-0 right-0 z-50 flex justify-center px-4 lg:px-6 pointer-events-none">
+      <div className="flex items-center gap-1 p-1 bg-white/40 backdrop-blur-2xl border border-emerald-100/50 rounded-full shadow-xl shadow-emerald-900/5 transition-all pointer-events-auto overflow-hidden">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={`relative px-6 py-2.5 text-sm font-medium tracking-tight transition-colors duration-300 rounded-full font-outfit ${
+              className={`relative px-4 lg:px-6 py-3 lg:py-2.5 text-[10px] lg:text-sm font-medium tracking-tight transition-colors duration-300 rounded-full font-outfit min-h-[44px] flex items-center ${
                 isActive ? "text-zinc-900" : "text-zinc-500 hover:text-zinc-800"
               }`}
             >

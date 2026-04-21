@@ -23,6 +23,7 @@ Use these specialized workflows for specific tasks:
 - [**UI-Standards**](file:///Users/nohcho/Desktop/me%20and%20IT/first%20step/myprojects/git-practice/bud-zdorov/.agent/skills/ui-standards.md): Apply consistent colors, fonts, and animations.
 - [**UX-Best-Practices**](file:///Users/nohcho/Desktop/me%20and%20IT/first%20step/myprojects/git-practice/bud-zdorov/.agent/skills/ux-best-practices.md): Optimize user flows and interactivity.
 - [**Mobile-Adaptation**](file:///Users/nohcho/Desktop/me%20and%20IT/first%20step/myprojects/git-practice/bud-zdorov/.agent/skills/mobile-adaptation.md): Ensure immediate responsiveness on all devices.
+- [**Mobile-First-Workflow**](file:///Users/nohcho/Desktop/me%20and%20IT/first%20step/myprojects/git-practice/bud-zdorov/.agent/skills/mobile-first-workflow.md): Procedural rules for mobile-first UI development.
 - [**Quality-Chain**](file:///Users/nohcho/Desktop/me%20and%20IT/first%20step/myprojects/git-practice/bud-zdorov/.agent/skills/quality-chain.md): Multi-agent synchronized quality control.
 - [**Spec-Check**](file:///Users/nohcho/Desktop/me%20and%20IT/first%20step/myprojects/git-practice/bud-zdorov/.agent/skills/spec-check.md): Procedural quality review.
 - [**Component-Builder**](file:///Users/nohcho/Desktop/me%20and%20IT/first%20step/myprojects/git-practice/bud-zdorov/.agent/skills/component-builder.md): Standardized UI creation.

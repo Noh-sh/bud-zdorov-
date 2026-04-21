@@ -26,15 +26,15 @@ export default function LanguagePicker() {
   };
 
   return (
-    <div className="fixed top-8 right-12 z-50 pointer-events-auto">
-      <div className="relative flex items-center p-1 bg-white/20 backdrop-blur-2xl border border-white/40 rounded-full shadow-2xl shadow-emerald-950/10 h-10 w-32">
+    <div className="fixed top-8 right-4 lg:right-12 z-50 pointer-events-auto">
+      <div className="relative flex items-center p-1 bg-white/20 backdrop-blur-2xl border border-white/40 rounded-full shadow-2xl shadow-emerald-950/10 h-11 lg:h-10 w-28 lg:w-32">
         {/* Animated Background Slider */}
         <motion.div
           layoutId="active-lang"
-          className="absolute h-8 w-[60px] bg-white rounded-full shadow-md z-0"
+          className="absolute h-9 lg:h-8 w-[52px] lg:w-[60px] bg-white rounded-full shadow-md z-0"
           initial={false}
           animate={{
-            x: locale === "en" ? 0 : 64,
+            x: locale === "en" ? 0 : 54,
           }}
           transition={{
             type: "spring",

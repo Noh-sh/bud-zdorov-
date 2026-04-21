@@ -9,4 +9,4 @@ This skill is used to create high-quality, reusable React components for the bud
 4.  **Implement Logic**: Use React functional components.
 5.  **Apply Styles**: Use Tailwind CSS + CSS Modules. Follow `ui-standards`.
 6.  **Add Translations**: Create keys in `messages/*.json` and use them via `next-intl`.
-7.  **Final Polish**: Apply `ux-best-practices` (accessibility, mobile touch targets).
+7.  **Final Polish**: Apply `ux-best-practices` and strictly follow `mobile-first-workflow` (accessibility, mobile touch targets, responsiveness check).

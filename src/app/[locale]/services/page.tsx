@@ -50,14 +50,14 @@ function CourseCard({ course, t }: { course: any, t: any }) {
               <div 
                 key={tier.id}
                 onClick={(e) => handlePriceSelect(e, tier.id)}
-                className={`text-center p-1.5 lg:p-2 rounded-xl transition-all border ${selectedPrice === tier.id ? "bg-emerald-500/20 border-emerald-400/50 scale-110 shadow-lg shadow-emerald-500/20" : "border-transparent opacity-60 hover:opacity-100 hover:bg-white/5"}`}
+                className={`text-center p-2 lg:p-2 rounded-xl transition-all border min-h-[44px] flex flex-col justify-center ${selectedPrice === tier.id ? "bg-emerald-500/20 border-emerald-400/50 scale-105 lg:scale-110 shadow-lg shadow-emerald-500/20" : "border-transparent opacity-60 hover:opacity-100 hover:bg-white/5"}`}
               >
                 <p className={`text-[8px] lg:text-[9px] uppercase font-black tracking-tighter ${selectedPrice === tier.id ? "text-white" : "text-emerald-300"}`}>{tier.label}</p>
                 <p className="text-[11px] lg:text-sm font-black font-playfair">{tier.price}</p>
               </div>
             ))}
           </div>
-          <button onClick={handleBuy} className="px-3 py-2 lg:px-4 lg:py-2 bg-emerald-500 text-white text-[9px] lg:text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-all active:scale-95 shadow-lg shadow-emerald-900/20">{t("buy")}</button>
+          <button onClick={handleBuy} className="px-4 py-3 lg:px-4 lg:py-2 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-all active:scale-95 shadow-lg shadow-emerald-900/20">{t("buy")}</button>
         </div>
       </motion.div>
     </div>
@@ -106,7 +106,7 @@ function Questionnaire({ t, courses }: { t: any, courses: any }) {
               <h3 className="font-playfair text-xl lg:text-2xl font-black text-zinc-900 uppercase tracking-tight">{t("questionnaire_title")}</h3>
               <p className="font-outfit text-sm lg:text-base text-zinc-500 font-medium leading-relaxed">{t("questionnaire_desc")}</p>
             </div>
-            <button onClick={() => setStep("quiz")} className="w-full py-3.5 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-900/10 active:scale-95 font-outfit tracking-widest uppercase text-xs">{t("questionnaire_start")}</button>
+            <button onClick={() => setStep("quiz")} className="w-full py-4 lg:py-3.5 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-900/10 active:scale-95 font-outfit tracking-widest uppercase text-xs">{t("questionnaire_start")}</button>
           </motion.div>
         )}
 
