@@ -37,8 +37,7 @@ export default function AboutPage() {
         <div className="flex-1 space-y-8 py-4">
           <div className="space-y-6">
             <h3 className="font-playfair text-4xl lg:text-5xl font-bold text-zinc-900 leading-tight">
-              {t("bio_title")}<br />
-              <span className="italic text-emerald-700">{t("bio_title_accent")}</span>
+              {t("bio_title")} {t("bio_title_accent")}
             </h3>
 
             <div className="space-y-4 font-outfit text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium">
